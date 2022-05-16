@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class post extends Model
 {
     use HasFactory;
+
+    //relacion de uno a muchos inversa
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
 }

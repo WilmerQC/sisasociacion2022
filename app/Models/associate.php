@@ -14,15 +14,26 @@ class associate extends Model
         return $this->hasMany(son::class);
     }
 
-    //relacion de uno a muchos inversa
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
-
     //relacion de uno a uno
     public function spouse()
     {
         return $this->hasOne(spouse::class);
+    }
+
+    //uno a muchos
+    public function stand(){
+        return $this->hasMany(stand::class);
+    }
+
+    //relacion de uno a muchos
+    public function assistance()
+    {
+        return $this->hasMany(Assistance::class);
+    }
+
+    //relacion de uno a muchos inversa
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }
