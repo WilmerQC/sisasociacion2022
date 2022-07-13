@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Livewire\CrudAssociate;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -12,11 +13,12 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+//ruta publica
 Route::get('/', function () {
     return view('welcome');
 });
 
+//rutas protegidas
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
@@ -25,4 +27,6 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+
+    Route::get('/associates',CrudAssociate::class)->name('associates');
 });

@@ -18,7 +18,6 @@ class AssociateFactory extends Factory
     public function definition()
     {
         return [
-            //
             'name'=>$this->faker->unique->firstName,
             'lastname'=>$this->faker->lastName,
             'dni'=>$this->faker->randomNumber(8),

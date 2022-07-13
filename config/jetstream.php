@@ -59,7 +59,9 @@ return [
 
     'features' => [
         // Features::termsAndPrivacyPolicy(),
-        // Features::profilePhotos(),
+
+        /* abilitas para agregar foto al perfil */
+        Features::profilePhotos(),
         // Features::api(),
         // Features::teams(['invitations' => true]),
         Features::accountDeletion(),

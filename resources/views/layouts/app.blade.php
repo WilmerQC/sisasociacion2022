@@ -12,11 +12,16 @@
 
         <!-- Styles -->
         <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
         @livewireStyles
 
         <!-- Scripts -->
         <script src="{{ mix('js/app.js') }}" defer></script>
+        {{-- Copiamos el CDN desde la opcion install para sweetAlert2 --}}
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script. src="https://cdn.ckeditor.com/ckeditor5/34.0.0/classic/ckeditor.js"></script>
+
     </head>
     <body class="font-sans antialiased">
         <x-jet-banner />
@@ -42,5 +47,8 @@
         @stack('modals')
 
         @livewireScripts
+
+        {{-- tambien esta opcion agregamos para sweetAlert 👇🏻 --}}
+        @stack('js')
     </body>
 </html>
