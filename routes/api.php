@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AssociateController;
 use App\Http\Controllers\SonsController;
+use App\Http\Livewire\PeriodLivewire;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -22,6 +23,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::apiResource('associates', AssociateController::class);
 Route::apiResource('sons', SonsController::class);
+/* Route::apiResource('periods', PeriodLivewire::class); */
 
 Route::group(['middleware' => 'api','prefix' => 'auth'], function ($router) {
     Route::post('login',[AuthController::class,'login']);

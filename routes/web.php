@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Livewire\CrudAssociate;
+use App\Http\Livewire\CrudSon;
+use App\Http\Livewire\PeriodLivewire;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,4 +31,6 @@ Route::middleware([
     })->name('dashboard');
 
     Route::get('/associates',CrudAssociate::class)->name('associates');
+    Route::get('/sons',CrudSon::class)->name('sons');
+    Route::get('/periods',PeriodLivewire::class)->name('periods');
 });

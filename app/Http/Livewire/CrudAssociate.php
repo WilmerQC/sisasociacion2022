@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\associate;
+use App\Models\Period;
 use App\Models\User;
 use Livewire\Component;
 
@@ -13,6 +14,7 @@ class CrudAssociate extends Component
     public $associate;
     public $direction='asc';
     public $sort='id';
+    public $period_id;
     protected $listeners=['render','delete'=>'delete'];
 
     protected $rules=[
@@ -44,7 +46,8 @@ class CrudAssociate extends Component
                                 ->orderBy($this->sort,$this->direction)
                                 ->paginate(10);
         $users=User::pluck('name','id');
-        return view('livewire.crud-associate',compact('associates','users'));
+        $periods=Period::pluck('name','id');
+        return view('livewire.crud-associate',compact('associates','users','periods'));
     }
 
     public function order($sort){

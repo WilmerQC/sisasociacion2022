@@ -9,11 +9,6 @@
                     <x-jet-input type="text" wire:model="search" class="w-full block pl-14" placeholder="Buscar associado..."/>
                 </label>
             </div>
-            <div class="py-3 border-b border-gray-300 text-center">
-                <select class="form-select-period" disabled>
-                    <option>{{$periods}}</option>
-                </select>
-            </div>
             <!--Boton nuevo   -->
             <div class="lg:ml-40 ml-10 space-x-8">
                 <button wire:click="create()" class="bg-rose-600 px-4 py-2 rounded-md text-white font-semibold tracking-wide cursor-pointer" >
@@ -29,34 +24,26 @@
             <table class="w-full divide-y divide-gray-200 table-auto">
               <thead class="bg-emerald-500 text-white">
                 <tr class="text-left text-xs font-bold  uppercase">
-                  <td wire:click="order('id')" scope="col" class="px-6 py-3 cursor-pointer">ID</td>
-                  <td wire:click="order('name')" scope="col" class="px-6 py-3 cursor-pointer">Nombre</td>
-                  <td scope="col" class="px-6 py-3 cursor-pointer">Apellidos</td>
+                  <td scope="col" class="px-6 py-3 cursor-pointer">ID</td>
+                  <td scope="col" class="px-6 py-3 cursor-pointer">Nombre Completo</td>
                   <td scope="col" class="px-6 py-3">DNI</td>
-                  <td scope="col" class="px-6 py-3">Telefono</td>
-                  <td scope="col" class="px-6 py-3">Fec.Nac.</td>
-                  <td scope="col" class="px-6 py-3 cursor-pointer">Email</td>
-                  <td scope="col" class="px-6 py-3 cursor-pointer">Direccion</td>
-                  <td scope="col" class="px-6 py-3 cursor-pointer">ID_Us.</td>
+                  <td scope="col" class="px-6 py-3">N.Academico</td>
+                  <td scope="col" class="px-6 py-3 cursor-pointer">ID_As.</td>
                   <td scope="col" class="px-6 py-3">Opciones</td>
                 </tr>
               </thead>
               <tbody class="divide-y divide-gray-200">
-                @foreach ($associates as $item)
+                @foreach ($sons as $item)
                 <tr class="text-sm font-medium text-gray-900">
                   <td class="px-6 py-4">
                     <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-emerald-300 text-white">
                       {{$item->id}}
                     </span>
                   </td>
-                  <td class="px-6 py-4">{{$item->name}}</td>
-                  <td class="px-6 py-4">{{$item->lastname}}</td>
+                  <td class="px-6 py-4">{{$item->fullname}}</td>
                   <td class="px-6 py-4">{{$item->dni}}</td>
-                  <td class="px-6 py-4">{{$item->phone}}</td>
-                  <td class="px-6 py-4">{{$item->birthdate}}</td>
-                  <td class="px-6 py-4">{{$item->email}}</td>
-                  <td class="px-6 py-4">{{$item->address}}</td>
-                  <td class="px-6 py-4">{{$item->user_id}}</td>
+                  <td class="px-6 py-4">{{$item->level}}</td>
+                  <td class="px-6 py-4">{{$item->associate_id}}</td>
                   <td class="px-6 py-4">
                     {{-- @livewire('cliente-edit',['cliente'=>$item],key($item->id)) --}}
                     <x-jet-button wire:click="edit({{$item}})"> <!-- Usamos metodos magicos -->
@@ -72,14 +59,14 @@
               </tbody>
             </table>
         </div>
-        @if(!$associates->count())
+        {{-- @if(!$sons->count())
             No existe ningun registro conincidente
         @endif
-        @if($associates->hasPages())
+        @if($sons->hasPages())
             <div class="px-6 py-3">
-            {{$associates->links()}}
+            {{$sons->links()}}
             </div>
-        @endif
+        @endif --}}
 
         </div>
       </div>
@@ -99,7 +86,7 @@
               }).then((result) => {
                 if (result.isConfirmed) {
                     //alert("del");
-                    Livewire.emitTo('crud-associate','delete',id);
+                    Livewire.emitTo('crud-son','delete',id);
                     Swal.fire(
                         '¡Eliminado!',
                         'Su archivo ha sido eliminado.',

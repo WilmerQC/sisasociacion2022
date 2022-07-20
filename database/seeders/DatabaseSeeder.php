@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\associate;
+use App\Models\Period;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
